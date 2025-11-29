@@ -1,0 +1,97 @@
+.left-toolbox {
+  width: 240px;
+  background: white;
+  border-right: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.toolbox-section {
+  padding: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.toolbox-section h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tool-list,
+.component-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tool-btn,
+.component-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: none;
+  background: #f8f8f8;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.tool-btn:hover:not(:disabled),
+.component-btn:hover {
+  background: #e8e8e8;
+  transform: translateX(2px);
+}
+
+.tool-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tool-btn.locked {
+  position: relative;
+}
+
+.lock-indicator {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 0.75rem;
+}
+
+.tool-icon,
+.component-icon {
+  font-size: 1.25rem;
+  width: 24px;
+  text-align: center;
+}
+
+.tool-name,
+.component-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.component-search {
+  margin-bottom: 0.75rem;
+}
+
+.component-search input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.component-search input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+

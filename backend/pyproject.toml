@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "pcb-backend"
+version = "0.1.0"
+description = "Beginner-friendly PCB design backend (FastAPI)"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.104.1"
+uvicorn = {extras = ["standard"], version = "^0.24.0"}
+pydantic = "^2.5.0"
+httpx = "^0.25.2"
+scikit-learn = "^1.3.2"
+numpy = "^1.24.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+

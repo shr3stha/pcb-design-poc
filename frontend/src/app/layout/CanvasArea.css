@@ -1,0 +1,7 @@
+.canvas-area {
+  flex: 1;
+  background: #fafafa;
+  position: relative;
+  overflow: hidden;
+}
+
