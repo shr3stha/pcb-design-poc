@@ -27,7 +27,7 @@ try:
 except ImportError:
     # Fallback: define models here if shared-schema not available
     from pydantic import BaseModel, Field
-    from typing import List, Dict, Optional
+    from typing import List, Dict, Optional, Any, Literal
     from enum import Enum
 
     class IssueSeverity(str, Enum):
@@ -60,10 +60,11 @@ except ImportError:
 
     class Issue(BaseModel):
         id: str
+        type: str = Field(default="unconnected_net")
         severity: IssueSeverity
         message: str
         related_ids: List[str] = Field(default_factory=list)
-        location: Optional[List[float]] = None
+        location: Optional[Dict[str, Any]] = None
 
     class Design(BaseModel):
         id: str

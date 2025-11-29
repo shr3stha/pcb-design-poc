@@ -1,73 +1,104 @@
 # Quick Start Guide
 
-## Start the Backend Server
+## Fixed Issues
 
-**In your terminal where you see `(venv)`:**
+✅ **PowerShell Script Syntax Errors** - Fixed quote handling in `start-server.ps1`  
+✅ **Environment Validation** - Created validation scripts for PowerShell, Git Bash, and WSL  
+✅ **Python Path Detection** - Scripts now auto-detect root `.venv` or `backend/venv`  
 
+## Step 1: Validate Environment
+
+### PowerShell
 ```powershell
-python -m uvicorn app.main:app --reload --port 8000
+cd backend
+.\validate-env.ps1
 ```
 
-**You should see:**
-```
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process
-INFO:     Started server process
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
+### Git Bash
+```bash
+cd backend
+bash validate-env.sh
 ```
 
-## Verify It's Working
+### WSL
+```bash
+cd backend
+bash validate-env.sh
+```
 
-**Option 1: PowerShell**
+## Step 2: Start Server
+
+### PowerShell
 ```powershell
-Invoke-RestMethod -Uri "http://localhost:8000/health"
+cd backend
+.\start-server.ps1
 ```
 
-**Option 2: Browser**
-- Open: http://localhost:8000/docs
-- Or: http://localhost:8000/health
+**OR** (simpler test script):
+```powershell
+cd backend
+.\test-start.ps1
+```
+
+### Git Bash / WSL
+```bash
+cd backend
+../.venv/bin/python -m uvicorn app.main:app --reload --port 8000
+```
+
+## Step 3: Verify Server
+
+Open in browser:
+- **Health Check**: http://localhost:8000/health
+- **API Docs**: http://localhost:8000/docs
 
 ## Troubleshooting
 
-### "No module named uvicorn"
-```powershell
-pip install -r requirements.txt
-```
+### If validation fails:
 
-### "Module not found" errors
-```powershell
-# Make sure you're in the backend directory
-cd backend
+1. **Python not found:**
+   - Install Python 3.10+ from python.org
+   - Add to PATH
 
-# Activate venv
-.\venv\Scripts\Activate.ps1
+2. **Virtual environment not found:**
+   ```powershell
+   # PowerShell
+   python -m venv .venv
+   .\.venv\Scripts\Activate.ps1
+   pip install -r backend/requirements.txt
+   ```
 
-# Install packages
-pip install -r requirements.txt
-```
+   ```bash
+   # Git Bash / WSL
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install -r backend/requirements.txt
+   ```
 
-### Port 8000 already in use
-```powershell
-# Use a different port
-python -m uvicorn app.main:app --reload --port 8001
-```
+3. **Packages missing:**
+   ```powershell
+   # PowerShell
+   ..\.venv\Scripts\pip.exe install -r backend/requirements.txt
+   ```
 
-### Import errors
-Check that all files are in place:
-- `app/main.py` exists
-- `app/api/designs.py` exists
-- `app/api/ml.py` exists
-- `app/domain/` folder exists
+   ```bash
+   # Git Bash / WSL
+   ../.venv/bin/pip install -r backend/requirements.txt
+   ```
 
-## Next: Start Frontend
+4. **Import errors:**
+   - Make sure you're in the `backend` directory
+   - Check that all files exist (see `validate-env.ps1` output)
 
-Once backend is running, open a **new terminal**:
+## Available Scripts
 
-```powershell
-cd frontend
-npm run dev
-```
+- `validate-env.ps1` / `validate-env.sh` - Full environment validation
+- `start-server.ps1` - Start server with validation
+- `test-start.ps1` - Simple server start (minimal checks)
 
-Then open: http://localhost:5173
+## Next Steps
 
+Once server is running:
+1. Start frontend in another terminal
+2. Access the application
+3. See `README.md` for full documentation

@@ -6,7 +6,7 @@ SOLID: Single Responsibility - each service handles one concern.
 from typing import List
 
 from app.domain.models import Design, Issue, IssueSeverity
-from app.app.infra.memory_repo import DesignRepository, design_repository
+from app.infra.memory_repo import DesignRepository, design_repository
 
 
 class DesignService:
