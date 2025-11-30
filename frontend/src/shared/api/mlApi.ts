@@ -1,4 +1,4 @@
-import { Design, MLSuggestionsResponse, ExplainErrorRequest, ExplainErrorResponse } from '../schema/schema'
+import type { Design, MLSuggestionsResponse, ExplainErrorRequest, ExplainErrorResponse } from '../schema/schema'
 import { apiClient } from './client'
 
 /**

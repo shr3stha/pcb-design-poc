@@ -1,5 +1,5 @@
 import { Design } from '../../../shared/schema/schema'
-import { mlApi } from '../../../shared/api/mlApi'
+import { mlApi } from '@shared/api/mlApi'
 import { useState } from 'react'
 import './ErrorList.css'
 

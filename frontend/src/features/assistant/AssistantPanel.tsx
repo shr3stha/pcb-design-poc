@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Design } from '../../../shared/schema/schema'
-import { mlApi } from '../../../shared/api/mlApi'
+import { mlApi } from '@shared/api/mlApi'
 import './AssistantPanel.css'
 
 interface AssistantPanelProps {
